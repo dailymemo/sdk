@@ -4,6 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
+    "lint": "eslint --fix lib",
     "test": "jest  --env=node"
   },
   "keywords": [],
@@ -27,6 +28,7 @@
     "prettier": "^1.19.1"
   },
   "dependencies": {
+    "babel-eslint": "^10.1.0",
     "isomorphic-fetch": "^3.0.0"
   }
 }
