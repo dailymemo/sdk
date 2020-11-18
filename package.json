@@ -1,5 +1,5 @@
 {
-  "name": "giki.sdk",
+  "name": "@gikiapp/sdk",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -7,8 +7,8 @@
     "test": "jest  --env=node"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "h.minghe@gmail.com",
+  "license": "MIT",
   "devDependencies": {
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^9.0.1",
