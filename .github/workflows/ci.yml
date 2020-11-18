@@ -1,0 +1,66 @@
+name: ci
+on: [push]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - name: check out
+        uses: actions/checkout@master
+      - name: use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: |
+          npm install
+      - name: npm lint
+        run: |
+          npm run lint
+
+      - name: npm test
+        run: |
+          npm test
+
+  publish:
+    needs: ci
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' )
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache node_modules
+      id: cache-modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: 12.x-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
+
+    - name: build
+      if: steps.cache-modules.outputs.cache-hit != 'true'
+      run: |
+        npm install
+
+    - name: lint
+      run: |
+        npm run lint
+
+    - name: test
+      run: |
+        npm test
+
+    - name: publish
+      uses: mikeal/merge-release@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+    - uses: release-drafter/release-drafter@v5
+      with:
+        publish: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: done publish notification
+      run: |
+        curl https://api.day.app/5Bn8rcSUNnRirLKVvuGCrn/DonePublishSDK
