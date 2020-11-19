@@ -27,7 +27,7 @@ jobs:
   publish:
     needs: ci
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && ( github.ref == 'refs/heads/fix-workflow' || github.ref == 'refs/heads/fix-workflow' )
+    if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/master' )
     steps:
     - uses: actions/checkout@v2
     - name: Cache node_modules
