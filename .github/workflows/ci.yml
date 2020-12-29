@@ -22,6 +22,6 @@ jobs:
 
       - name: npm test
         env:
-          GIKI_TOKEN: ${{GIKI_TOKEN}}
+          GIKI_TOKEN: ${{ secrets.GIKI_TOKEN }}
         run: |
           npm test
