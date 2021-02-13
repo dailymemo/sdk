@@ -35,20 +35,20 @@ if (res.ok) {
 **user fetch**
 
 ```
-GET https://api.giki.app/users
+GET https://giki.app/api/users
 ```
 
 - fetch by name
 
 ```shell
-curl 'https://api.giki.app/users?name=<your name>' \
+curl 'https://giki.app/api/users?name=<your name>' \
   -H 'authorization: Basic <your token>'
 ```
 
 - fetch by domain
 
 ```shell
-curl 'https://api.giki.app/users?domain=<your domain>' \
+curl 'https://giki.app/api/users?domain=<your domain>' \
   -H 'authorization: Basic <your token>'
 ```
 
@@ -67,12 +67,12 @@ curl -X PUT 'https://api.giki.app/users' \
 **giki create**
 
 ```
-POST https://api.giki.app/api/talks
+POST https://giki.app/api/talks
 ```
 
 ```shell
 
-curl -X POST 'https://api.giki.app/talks' \
+curl -X POST 'https://giki.app/api/talks' \
   -H 'authority: giki.app' \
   -H 'authorization: Basic <your token>' \
   -H 'content-type: application/json' \
@@ -83,7 +83,7 @@ curl -X POST 'https://api.giki.app/talks' \
 **giki update**
 
 ```
-PUT https://api.giki.app/talks
+PUT https://giki.app/api/talks
 ```
 
 ```shell
@@ -99,13 +99,13 @@ curl -X PUT 'https://giki.app/api/talks/update' \
 **giki list**
 
 ```
-GET https://api.giki.app/talks
+GET https://giki.app/api/talks
 ```
 
 - list by domain
 
 ```shell
-curl 'https://api.giki.app/talks?domain=iiiii.li' \
+curl 'https://giki.app/api/talks?domain=iiiii.li' \
   -H 'authority: giki.app' \
   -H 'authorization: Basic <your token>'
 ```
@@ -113,7 +113,7 @@ curl 'https://api.giki.app/talks?domain=iiiii.li' \
 - list by name
 
 ```shell
-curl 'https://api.giki.app/talks?name=i' \
+curl 'https://giki.app/api/talks?name=i' \
   -H 'authority: giki.app' \
   -H 'authorization: Basic <your token>'
 ```
@@ -125,14 +125,14 @@ https://giki.app/api/talks/query
 ```
 
 ```
-  curl 'https://api.giki.app/talks?id=<giki id>' \
+  curl 'https://giki.app/api/talks?id=<giki id>' \
   -H 'authorization: Basic <your token>'
 ```
 
 **giki tags list**
 
 ```
-https://api.giki.app/talks
+https://giki.app/api/talks
 ```
 
 you can list tags by a domain or a name of a user, with `list_tag=true` in query
@@ -141,13 +141,13 @@ string
 - list by domain
 
 ```
-curl 'https://api.giki.app/talks?domain=iiiii.li&list_tag=true' \
+curl 'https://giki.app/api/talks?domain=iiiii.li&list_tag=true' \
   -H 'authorization: Basic <your token>'
 ```
 
 - list by name
 
 ```
-curl 'https://api.giki.app/talks?name=i&list_tag=true' \
+curl 'https://giki.app/api/talks?name=i&list_tag=true' \
   -H 'authorization: Basic <your token>'
 ```
